@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - "feature/**"
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Verificar Node.js
+        run: node --version
+
+      - name: Verificar npm
+        run: npm --version
+
+      - name: Verificar proyecto
+        run: echo "CI de AutoPartes Pro ejecutado correctamente"
