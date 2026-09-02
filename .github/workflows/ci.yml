@@ -10,7 +10,7 @@ on:
       - main
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,11 +22,8 @@ jobs:
         with:
           node-version: 24
 
-      - name: Verificar Node.js
-        run: node --version
+      - name: Instalar dependencias
+        run: npm ci
 
-      - name: Verificar npm
-        run: npm --version
-
-      - name: Verificar proyecto
-        run: echo "CI de AutoPartes Pro ejecutado correctamente"
+      - name: Ejecutar pruebas automatizadas
+        run: npm test
